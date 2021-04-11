@@ -1,3 +1,7 @@
+<?php
+include "class/index.php";
+$rcv = new devedor();
+?>
 <!doctype html>
 <html lang="pt">
 
