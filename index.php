@@ -33,6 +33,7 @@ $rcv = new devedor();
           <div class="tab-pane fade show active" id="devedor" role="tabpanel" aria-labelledby="devedor-tab">
             <?php
             $rcv->cadastraDevedor();
+            $rcv->cadastraDivida();
             ?>
             <form method="post">
               <div class="row pt-2">
@@ -97,7 +98,7 @@ $rcv = new devedor();
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Buscar devedor</label>
-                    <select class="custom-select" size="3">
+                    <select name="divida[]" id="divida[]" class="custom-select" size="3">
                       <?php $rcv->listaDevedores('select'); ?>
                     </select>
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>

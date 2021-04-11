@@ -51,7 +51,7 @@ class devedor
     $sql = "insert into rcv_devedor (nome, cpf, data_nascimento, endereco) values('$nome', '$cpf', '$data', '$endereco');";
     //echo $sql;
     if ($conn->query($sql) === TRUE) {
-      echo $this->msgAviso('success', 'Cadastro realizado com sucesso.');
+      echo $this->msgAviso('success', 'Cadastro de Devedor realizado com sucesso.');
     } else {
       echo $this->msgAviso('danger', 'Erro ao cadastrar.');
     }
@@ -73,7 +73,7 @@ class devedor
                       <td>$row[data_nascimento]</td>
                     </tr>";
         } else {
-          $output .= "<option value='1'>$row[cpf] - $row[nome]</option>";
+          $output .= "<option value='$row[id]'>$row[cpf] - $row[nome]</option>";
         }
       }
     }
@@ -89,4 +89,40 @@ class devedor
               </button>
             </div>";
   }
+
+  public function cadastraDivida()
+  {
+    if (!empty($_POST['divida'])) {
+      foreach ($_POST['divida'] as $value) {
+        if (empty($value)) {
+          $input = 1;
+        }
+      }
+      if (empty($input)) {
+        $iddevedor = $_POST['divida'][0];
+        $descricao = $_POST['divida'][1];
+        $valor = $_POST['divida'][2];
+        $datavencimento = $_POST['divida'][3];
+        $this->insereDivida($iddevedor, $descricao, $valor, $datavencimento);
+        return true;
+      } else {
+        echo $this->msgAviso('warning', 'Preencha todos campos.');
+        return false;
+      }
+    }
+  }
+
+  public function insereDivida($iddevedor, $descricao, $valor, $datavencimento)
+  {
+    global $conn;
+    $data = date('Y-m-d', strtotime($datavencimento));
+    $sql = "insert into rcv_divida (id_devedor, descricao_titulo, valor, data_vencimento, updated) values('$iddevedor', '$descricao', '$valor', '$data', current_timestamp());";
+    //echo $sql;
+    if ($conn->query($sql) === TRUE) {
+      echo $this->msgAviso('success', 'Cadastro de Dívida realizado com sucesso.');
+    } else {
+      echo $this->msgAviso('danger', 'Erro ao cadastrar.'.$sql);
+    }
+  }
+
 }
