@@ -57,7 +57,7 @@ class devedor
     }
   }
 
-  public function listaDevedores()
+  public function listaDevedores($e)
   {
     global $conn;
     $output = '';
@@ -65,17 +65,20 @@ class devedor
     $ors = $conn->query($sql);
     if ($ors->num_rows > 0) {
       while ($row = $ors->fetch_assoc()) {
-        $output .= "<tr>
+        if ($e == 'tabela') {
+          $output .= "<tr>
                       <th scope='row'>$row[id]</th>
                       <td>$row[nome]</td>
                       <td>$row[cpf]</td>
                       <td>$row[data_nascimento]</td>
                     </tr>";
+        } else {
+          $output .= "<option value='1'>$row[cpf] - $row[nome]</option>";
+        }
       }
     }
     echo $output;
   }
-
 
   public function msgAviso($a, $msg)
   {

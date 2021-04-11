@@ -35,7 +35,7 @@ $rcv = new devedor();
             $rcv->cadastraDevedor();
             ?>
             <form method="post">
-              <div class="row">
+              <div class="row pt-2">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Nome do devedor</label>
@@ -84,7 +84,7 @@ $rcv = new devedor();
                       </tr>
                     </thead>
                     <tbody>
-                      <?php $rcv->listaDevedores(); ?>
+                      <?php $rcv->listaDevedores('tabela'); ?>
                     </tbody>
                   </table>
                 </div>
@@ -93,11 +93,13 @@ $rcv = new devedor();
           </div>
           <div class="tab-pane fade" id="divida" role="tabpanel" aria-labelledby="divida-tab">
             <form method="post">
-              <div class="row">
+              <div class="row pt-2">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label>Nome do devedor</label>
-                    <input type="text" class="form-control" name="divida[]" id="divida[]" aria-describedby="nome" placeholder="Nome do devedor">
+                    <label>Buscar devedor</label>
+                    <select class="custom-select" size="3">
+                      <?php $rcv->listaDevedores('select'); ?>
+                    </select>
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>
                   </div>
                 </div>
