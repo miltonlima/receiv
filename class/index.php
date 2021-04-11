@@ -20,4 +20,19 @@ class devedor
       die("Connection failed: " . $conn->connect_error);
     }
   }
+
+  public function cadastraDevedor()
+  {
+    if (!empty($_POST)) {
+      foreach ($_POST['info'] as $key => $value) {
+        //echo " $value ";
+        if (empty($value)) {
+          echo $this->msgAviso('warning', 'Preencha todos campos.');
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
 }
