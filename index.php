@@ -30,8 +30,10 @@ $rcv = new devedor();
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <?php
+            $rcv->cadastraDevedor();
+            ?>
             <form method="post" name="frmpost">
               <div class="row">
                 <div class="col-sm-12 col-md-6">
