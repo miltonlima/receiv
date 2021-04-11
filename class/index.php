@@ -35,4 +35,13 @@ class devedor
       return false;
     }
   }
+  public function msgAviso($a, $msg)
+  {
+    return "<div class='alert alert-$a alert-dismissible fade show mt-2' role='alert'>
+              $msg
+              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>";
+  }
 }
