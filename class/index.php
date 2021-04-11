@@ -1,6 +1,7 @@
 <?php
 class devedor
 {
+  public $conn;
   public $servername = 'localhost';
   public $username = 'root';
   public $password = '';
@@ -29,12 +30,20 @@ class devedor
         if (empty($value)) {
           echo $this->msgAviso('warning', 'Preencha todos campos.');
           return false;
+        } else {
         }
       }
     } else {
       return false;
     }
   }
+
+  public function insereDevedor()
+  {
+    # code...
+  }
+
+
   public function msgAviso($a, $msg)
   {
     return "<div class='alert alert-$a alert-dismissible fade show mt-2' role='alert'>

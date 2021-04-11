@@ -46,14 +46,14 @@ $rcv = new devedor();
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">CPF</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="CPF">
+                    <input type="text" class="form-control cpf" name="info[]" id="info[]" aria-describedby="nome" placeholder="CPF">
                     <small id="nome" class="form-text text-muted">CPF</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Data de Nascimento</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Nascimento">
+                    <input type="text" class="form-control data" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Nascimento">
                     <small id="nome" class="form-text text-muted">Data de Nascimento</small>
                   </div>
                 </div>
@@ -74,14 +74,14 @@ $rcv = new devedor();
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Valor</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Valor">
+                    <input type="text" class="form-control valor" name="info[]" id="info[]" aria-describedby="nome" placeholder="Valor">
                     <small id="nome" class="form-text text-muted">Valor</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Data de Vencimento</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Vencimento">
+                    <input type="text" class="form-control data" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Vencimento">
                     <small id="nome" class="form-text text-muted">Data de Vencimento</small>
                   </div>
                 </div>
@@ -99,6 +99,7 @@ $rcv = new devedor();
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/jquery.mask.js" type="text/javascript"></script>
   <script src="bootstrap/assets/js/vendor/popper.min.js"></script>
   <script src="bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="js/script.js"></script>
