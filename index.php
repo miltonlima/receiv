@@ -34,7 +34,7 @@ $rcv = new devedor();
             <?php
             $rcv->cadastraDevedor();
             ?>
-            <form method="post" name="frmpost">
+            <form method="post">
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
@@ -64,6 +64,22 @@ $rcv = new devedor();
                     <small id="nome" class="form-text text-muted">Endereço</small>
                   </div>
                 </div>
+                <div class="col-sm-12 col-md-12">
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <form method="post">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nome do devedor</label>
+                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Nome do devedor">
+                    <small id="nome" class="form-text text-muted">Nome do devedor.</small>
+                  </div>
+                </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Descrição do Título</label>
@@ -91,7 +107,6 @@ $rcv = new devedor();
               </div>
             </form>
           </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
         </div>
       </div>
     </div>
