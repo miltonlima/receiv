@@ -23,14 +23,14 @@ $rcv = new devedor();
       <div class="col border py-3">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Devedores</a>
+            <a class="nav-link active" id="devedor-tab" data-toggle="tab" href="#devedor" role="tab" aria-controls="devedor" aria-selected="true">Devedores</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Dívidas</a>
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#divida" role="tab" aria-controls="divida" aria-selected="false">Dívidas</a>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="tab-pane fade show active" id="devedor" role="tabpanel" aria-labelledby="devedor-tab">
             <?php
             $rcv->cadastraDevedor();
             ?>
@@ -38,71 +38,71 @@ $rcv = new devedor();
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nome do devedor</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Nome do devedor">
+                    <label>Nome do devedor</label>
+                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Nome do devedor">
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">CPF</label>
-                    <input type="text" class="form-control cpf" name="info[]" id="info[]" aria-describedby="nome" placeholder="CPF">
+                    <label>CPF</label>
+                    <input type="text" class="form-control cpf" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="CPF">
                     <small id="nome" class="form-text text-muted">CPF</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Data de Nascimento</label>
-                    <input type="text" class="form-control data" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Nascimento">
+                    <label>Data de Nascimento</label>
+                    <input type="text" class="form-control data" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Data de Nascimento">
                     <small id="nome" class="form-text text-muted">Data de Nascimento</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Endereço</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Endereço">
+                    <label>Endereço</label>
+                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Endereço">
                     <small id="nome" class="form-text text-muted">Endereço</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
-                  <button type="submit" class="btn btn-primary">Salvar</button>
+                  <button type="submit" class="btn btn-primary float-right">Salvar</button>
                 </div>
               </div>
             </form>
           </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="tab-pane fade" id="divida" role="tabpanel" aria-labelledby="divida-tab">
           <form method="post">
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Nome do devedor</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Nome do devedor">
+                    <label>Nome do devedor</label>
+                    <input type="text" class="form-control" name="divida[]" id="divida[]" aria-describedby="nome" placeholder="Nome do devedor">
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Descrição do Título</label>
-                    <input type="text" class="form-control" name="info[]" id="info[]" aria-describedby="nome" placeholder="Descrição do Título">
+                    <label>Descrição do Título</label>
+                    <input type="text" class="form-control" name="divida[]" id="divida[]" aria-describedby="nome" placeholder="Descrição do Título">
                     <small id="nome" class="form-text text-muted">Descrição do Título</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Valor</label>
-                    <input type="text" class="form-control valor" name="info[]" id="info[]" aria-describedby="nome" placeholder="Valor">
+                    <label>Valor</label>
+                    <input type="text" class="form-control valor" name="divida[]" id="divida[]" aria-describedby="nome" placeholder="Valor">
                     <small id="nome" class="form-text text-muted">Valor</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Data de Vencimento</label>
-                    <input type="text" class="form-control data" name="info[]" id="info[]" aria-describedby="nome" placeholder="Data de Vencimento">
+                    <label>Data de Vencimento</label>
+                    <input type="text" class="form-control data" name="divida[]" id="divida[]" aria-describedby="nome" placeholder="Data de Vencimento">
                     <small id="nome" class="form-text text-muted">Data de Vencimento</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
-                  <button type="submit" class="btn btn-primary">Salvar</button>
+                  <button type="submit" class="btn btn-primary float-right">Salvar</button>
                 </div>
               </div>
             </form>

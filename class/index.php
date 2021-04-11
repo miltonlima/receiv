@@ -24,23 +24,37 @@ class devedor
 
   public function cadastraDevedor()
   {
-    if (!empty($_POST)) {
-      foreach ($_POST['info'] as $key => $value) {
-        //echo " $value ";
+    if (!empty($_POST['devedor'])) {
+      foreach ($_POST['devedor'] as $value) {
         if (empty($value)) {
-          echo $this->msgAviso('warning', 'Preencha todos campos.');
-          return false;
-        } else {
+          $input = 1;
         }
       }
-    } else {
-      return false;
+      if (empty($input)) {
+        $nome = $_POST['devedor'][0];
+        $cpf = preg_replace('/[^0-9]/', '', $_POST['devedor'][1]);
+        $nascimento = $_POST['devedor'][2];
+        $endereco = $_POST['devedor'][3];
+        $this->insereDevedor($nome, $cpf, $nascimento, $endereco);
+        return true;
+      } else {
+        echo $this->msgAviso('warning', 'Preencha todos campos.');
+        return false;
+      }
     }
   }
 
-  public function insereDevedor()
+  public function insereDevedor($nome, $cpf, $nascimento, $endereco)
   {
-    # code...
+    global $conn;
+    $data = date('Y-m-d', strtotime($nascimento));
+    $sql = "insert into rcv_devedor (nome, cpf, data_nascimento, endereco) values('$nome', '$cpf', '$data', '$endereco');";
+    //echo $sql;
+    if ($conn->query($sql) === TRUE) {
+      echo $this->msgAviso('success','Cadastro realizado com sucesso.');
+    }else{
+      echo "não foi";
+    }
   }
 
 
