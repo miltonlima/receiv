@@ -51,10 +51,29 @@ class devedor
     $sql = "insert into rcv_devedor (nome, cpf, data_nascimento, endereco) values('$nome', '$cpf', '$data', '$endereco');";
     //echo $sql;
     if ($conn->query($sql) === TRUE) {
-      echo $this->msgAviso('success','Cadastro realizado com sucesso.');
-    }else{
-      echo "não foi";
+      echo $this->msgAviso('success', 'Cadastro realizado com sucesso.');
+    } else {
+      echo $this->msgAviso('danger', 'Erro ao cadastrar.');
     }
+  }
+
+  public function listaDevedores()
+  {
+    global $conn;
+    $output = '';
+    $sql = "select * from rcv_devedor;";
+    $ors = $conn->query($sql);
+    if ($ors->num_rows > 0) {
+      while ($row = $ors->fetch_assoc()) {
+        $output .= "<tr>
+                      <th scope='row'>$row[id]</th>
+                      <td>$row[nome]</td>
+                      <td>$row[cpf]</td>
+                      <td>$row[data_nascimento]</td>
+                    </tr>";
+      }
+    }
+    echo $output;
   }
 
 

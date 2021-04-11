@@ -69,9 +69,30 @@ $rcv = new devedor();
                 </div>
               </div>
             </form>
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <h5>Lista de Devedores</h5>
+                <div class="table-responsive">
+                  <table class="table">
+                    <caption>Lista de usuários</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nascimento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $rcv->listaDevedores(); ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="tab-pane fade" id="divida" role="tabpanel" aria-labelledby="divida-tab">
-          <form method="post">
+            <form method="post">
               <div class="row">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
