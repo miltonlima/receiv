@@ -61,7 +61,7 @@ class devedor
   {
     global $conn;
     $output = '';
-    $sql = "select * from rcv_devedor order by nome asc;";
+    $sql = "select *,date_format(data_nascimento,'%d/%m/%Y') data_nascimento from rcv_devedor order by nome asc;";
     $ors = $conn->query($sql);
     if ($ors->num_rows > 0) {
       while ($row = $ors->fetch_assoc()) {
@@ -134,10 +134,11 @@ class devedor
     if ($ors->num_rows > 0) {
       while ($row = $ors->fetch_assoc()) {
         if ($e == 'tabela') {
+          $valor = number_format($row['valor'], 2, ',', '.');
           $output .= "<tr>
                       <th scope='row'>$row[id]</th>
                       <td>$row[id_devedor]</td>
-                      <td>$row[valor]</td>
+                      <td>$valor</td>
                       <td>$row[data_vencimento]</td>
                     </tr>";
         } else {
