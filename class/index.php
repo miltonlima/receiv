@@ -48,7 +48,7 @@ class devedor
   {
     global $conn;
     $data = date('Y-m-d', strtotime($nascimento));
-    $sql = "insert into rcv_devedor (nome, cpf, data_nascimento, endereco) values('$nome', '$cpf', '$data', '$endereco');";
+    $sql = "insert into rcv_devedor (nome, cpf, data_nascimento, endereco) values('$nome', '$cpf', str_to_date('$nascimento','%d/%m/%Y'), '$endereco');";
     //echo $sql;
     if ($conn->query($sql) === TRUE) {
       echo $this->msgAviso('success', 'Cadastro de Devedor realizado com sucesso.');
@@ -115,9 +115,8 @@ class devedor
   public function insereDivida($iddevedor, $descricao, $valor, $datavencimento)
   {
     global $conn;
-    $data = date('Y-m-d', strtotime($datavencimento));
-    $sql = "insert into rcv_divida (id_devedor, descricao_titulo, valor, data_vencimento, updated) values('$iddevedor', '$descricao', '$valor', '$data', current_timestamp());";
-    //echo $sql;
+    $preco = str_replace(",", ".",str_replace(".", "", $valor));
+    $sql = "insert into rcv_divida (id_devedor, descricao_titulo, valor, data_vencimento, updated) values($iddevedor, '$descricao', '$preco', str_to_date('$datavencimento','%d/%m/%Y'), current_timestamp());";
     if ($conn->query($sql) === TRUE) {
       echo $this->msgAviso('success', 'Cadastro de Dívida realizado com sucesso.');
     } else {
@@ -129,7 +128,7 @@ class devedor
   {
     global $conn;
     $output = '';
-    $sql = "select *, date_format(data_vencimento,'%d/%m/%Y') data_vencimento from rcv_divida order by data_vencimento asc;";
+    $sql = "select *, date_format(data_vencimento,'%d/%m/%Y') data_vencimento from rcv_divida di inner join rcv_devedor de on di.id_devedor = de.id order by di.updated desc;";
     $ors = $conn->query($sql);
     if ($ors->num_rows > 0) {
       while ($row = $ors->fetch_assoc()) {
@@ -137,7 +136,7 @@ class devedor
           $valor = number_format($row['valor'], 2, ',', '.');
           $output .= "<tr>
                       <th scope='row'>$row[id]</th>
-                      <td>$row[id_devedor]</td>
+                      <td>$row[nome]</td>
                       <td>$valor</td>
                       <td>$row[data_vencimento]</td>
                     </tr>";

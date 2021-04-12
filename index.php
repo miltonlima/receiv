@@ -135,13 +135,13 @@ $rcv = new devedor();
                 <h5>Lista de Dívidas</h5>
                 <div class="table-responsive">
                   <table class="table">
-                    <caption>Lista de usuários</caption>
+                    <caption>Lista de dívidas</caption>
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Nascimento</th>
+                        <th scope="col">Devedor</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Vencimento</th>
                       </tr>
                     </thead>
                     <tbody>
