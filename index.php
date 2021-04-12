@@ -32,12 +32,13 @@ $rcv = new devedor();
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="devedor" role="tabpanel" aria-labelledby="devedor-tab">
             <?php
-            if (empty($_GET['edit'])) {
+            if (!empty($_GET['edit'])) {
+              $rcv->atualizaDevedor();
+              $devedor = $rcv->buscarDevedor($_GET['edit']);
+            } else {
               $rcv->cadastraDevedor();
               $rcv->cadastraDivida();
               $devedor = null;
-            } else {
-              $devedor = $rcv->buscarDevedor($_GET['edit']);
             }
 
             ?>
@@ -73,7 +74,7 @@ $rcv = new devedor();
                 </div>
                 <div class="col-sm-12 col-md-12 text-right">
                   <?php
-                  echo $rcv->cancelarEdit();
+                  echo $rcv->cancelarEditar();
                   ?>
                   <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>

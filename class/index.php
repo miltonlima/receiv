@@ -57,6 +57,21 @@ class devedor
     }
   }
 
+  public function atualizaDevedor()
+  {
+    global $conn;
+    if (!empty($_GET['edit'])) {
+      if (!empty($_POST['devedor'][0]) && !empty($_POST['devedor'][1]) && !empty($_POST['devedor'][2]) && !empty($_POST['devedor'][3])) {
+        $sql = "update rcv_devedor set nome= '".$_POST['devedor'][0]."' where id = $_GET[edit];";
+        if ($conn->query($sql) === TRUE) {
+          echo $this->msgAviso('success', 'Atualização de Devedor realizado com sucesso.');
+        } else {
+          echo $this->msgAviso('danger', 'Erro ao cadastrar.');
+        }
+      }
+    }
+  }
+
   public function buscarDevedor($id)
   {
     //echo "atualizardevedor";
@@ -159,7 +174,7 @@ class devedor
     echo $output;
   }
 
-  public function cancelarEdit()
+  public function cancelarEditar()
   {
     if (!empty($_GET['edit'])) {
       return "<a href='/receiv/' class='btn btn-secondary'>Cancelar</a>";
