@@ -158,4 +158,11 @@ class devedor
     }
     echo $output;
   }
+
+  public function cancelarEdit()
+  {
+    if (!empty($_GET['edit'])) {
+      return "<a href='/receiv/' class='btn btn-secondary'>Cancelar</a>";
+    }
+  }
 }

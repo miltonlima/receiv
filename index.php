@@ -18,7 +18,7 @@ $rcv = new devedor();
 
 <body>
   <div class="container py-2">
-    <h3>Receiv</h3>
+    <h3><a class="nav-link" href="/receiv/">Receiv</a></h3>
     <div class="row">
       <div class="col border py-3">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -35,6 +35,7 @@ $rcv = new devedor();
             if (empty($_GET['edit'])) {
               $rcv->cadastraDevedor();
               $rcv->cadastraDivida();
+              $devedor = null;
             } else {
               $devedor = $rcv->buscarDevedor($_GET['edit']);
             }
@@ -70,8 +71,11 @@ $rcv = new devedor();
                     <small id="nome" class="form-text text-muted">Endereço</small>
                   </div>
                 </div>
-                <div class="col-sm-12 col-md-12">
-                  <button type="submit" class="btn btn-primary float-right">Salvar</button>
+                <div class="col-sm-12 col-md-12 text-right">
+                  <?php
+                  echo $rcv->cancelarEdit();
+                  ?>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
                 </div>
               </div>
             </form>
