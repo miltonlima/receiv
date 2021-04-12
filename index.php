@@ -130,6 +130,27 @@ $rcv = new devedor();
                 </div>
               </div>
             </form>
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <h5>Lista de Dívidas</h5>
+                <div class="table-responsive">
+                  <table class="table">
+                    <caption>Lista de usuários</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Nascimento</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $rcv->listaDividas('tabela'); ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

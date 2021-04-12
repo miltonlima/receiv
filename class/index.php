@@ -61,7 +61,7 @@ class devedor
   {
     global $conn;
     $output = '';
-    $sql = "select * from rcv_devedor;";
+    $sql = "select * from rcv_devedor order by nome asc;";
     $ors = $conn->query($sql);
     if ($ors->num_rows > 0) {
       while ($row = $ors->fetch_assoc()) {
@@ -121,8 +121,30 @@ class devedor
     if ($conn->query($sql) === TRUE) {
       echo $this->msgAviso('success', 'Cadastro de Dívida realizado com sucesso.');
     } else {
-      echo $this->msgAviso('danger', 'Erro ao cadastrar.'.$sql);
+      echo $this->msgAviso('danger', 'Erro ao cadastrar.' . $sql);
     }
   }
 
+  public function listaDividas($e)
+  {
+    global $conn;
+    $output = '';
+    $sql = "select *, date_format(data_vencimento,'%d/%m/%Y') data_vencimento from rcv_divida order by data_vencimento asc;";
+    $ors = $conn->query($sql);
+    if ($ors->num_rows > 0) {
+      while ($row = $ors->fetch_assoc()) {
+        if ($e == 'tabela') {
+          $output .= "<tr>
+                      <th scope='row'>$row[id]</th>
+                      <td>$row[id_devedor]</td>
+                      <td>$row[valor]</td>
+                      <td>$row[data_vencimento]</td>
+                    </tr>";
+        } else {
+          $output .= "<option value='$row[id]'>$row[cpf] - $row[nome]</option>";
+        }
+      }
+    }
+    echo $output;
+  }
 }
