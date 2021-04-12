@@ -57,6 +57,17 @@ class devedor
     }
   }
 
+  public function buscarDevedor($id)
+  {
+    //echo "atualizardevedor";
+    global $conn;
+    $sql = "select *, date_format(data_nascimento, '%d/%m/%Y') data_nascimento from rcv_devedor where id = $id limit 1;";
+    $ors = $conn->query($sql);
+    if ($ors->num_rows > 0) {
+      return $ors->fetch_assoc();
+    }
+  }
+
   public function listaDevedores($e)
   {
     global $conn;
@@ -67,10 +78,10 @@ class devedor
       while ($row = $ors->fetch_assoc()) {
         if ($e == 'tabela') {
           $output .= "<tr>
-                      <th scope='row'>$row[id]</th>
-                      <td>$row[nome]</td>
-                      <td>$row[cpf]</td>
-                      <td>$row[data_nascimento]</td>
+                      <th scope='row'><a role='button' class='btn btn-light p-1' href='/receiv/?edit=$row[id]'>$row[id]</a></th>
+                      <td><a role='button' class='btn btn-light p-1' href='/receiv/?edit=$row[id]'>$row[nome]</a></td>
+                      <td><a role='button' class='btn btn-light p-1' href='/receiv/?edit=$row[id]'>$row[cpf]</a></td>
+                      <td><a role='button' class='btn btn-light p-1' href='/receiv/?edit=$row[id]'>$row[data_nascimento]</a></td>
                     </tr>";
         } else {
           $output .= "<option value='$row[id]'>$row[cpf] - $row[nome]</option>";
@@ -115,7 +126,7 @@ class devedor
   public function insereDivida($iddevedor, $descricao, $valor, $datavencimento)
   {
     global $conn;
-    $preco = str_replace(",", ".",str_replace(".", "", $valor));
+    $preco = str_replace(",", ".", str_replace(".", "", $valor));
     $sql = "insert into rcv_divida (id_devedor, descricao_titulo, valor, data_vencimento, updated) values($iddevedor, '$descricao', '$preco', str_to_date('$datavencimento','%d/%m/%Y'), current_timestamp());";
     if ($conn->query($sql) === TRUE) {
       echo $this->msgAviso('success', 'Cadastro de Dívida realizado com sucesso.');

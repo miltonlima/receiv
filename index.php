@@ -32,36 +32,41 @@ $rcv = new devedor();
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="devedor" role="tabpanel" aria-labelledby="devedor-tab">
             <?php
-            $rcv->cadastraDevedor();
-            $rcv->cadastraDivida();
+            if (empty($_GET['edit'])) {
+              $rcv->cadastraDevedor();
+              $rcv->cadastraDivida();
+            } else {
+              $devedor = $rcv->buscarDevedor($_GET['edit']);
+            }
+
             ?>
             <form method="post">
               <div class="row pt-2">
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Nome do devedor</label>
-                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Nome do devedor">
+                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" value="<?php echo $devedor['nome']; ?>" placeholder="Nome do devedor">
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>CPF</label>
-                    <input type="text" class="form-control cpf" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="CPF">
+                    <input type="text" class="form-control cpf" name="devedor[]" id="devedor[]" aria-describedby="nome" value="<?php echo $devedor['cpf']; ?>" placeholder="CPF">
                     <small id="nome" class="form-text text-muted">CPF</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Data de Nascimento</label>
-                    <input type="text" class="form-control data" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Data de Nascimento">
+                    <input type="text" class="form-control data" name="devedor[]" id="devedor[]" aria-describedby="nome" value="<?php echo $devedor['data_nascimento']; ?>" placeholder="Data de Nascimento">
                     <small id="nome" class="form-text text-muted">Data de Nascimento</small>
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
                   <div class="form-group">
                     <label>Endereço</label>
-                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" placeholder="Endereço">
+                    <input type="text" class="form-control" name="devedor[]" id="devedor[]" aria-describedby="nome" value="<?php echo $devedor['endereco']; ?>" placeholder="Endereço">
                     <small id="nome" class="form-text text-muted">Endereço</small>
                   </div>
                 </div>
@@ -99,6 +104,7 @@ $rcv = new devedor();
                   <div class="form-group">
                     <label>Buscar devedor</label>
                     <select name="divida[]" id="divida[]" class="custom-select" size="3">
+                      <option selected></option>
                       <?php $rcv->listaDevedores('select'); ?>
                     </select>
                     <small id="nome" class="form-text text-muted">Nome do devedor.</small>
