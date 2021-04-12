@@ -40,7 +40,6 @@ $rcv = new devedor();
               $rcv->cadastraDivida();
               $devedor = null;
             }
-
             ?>
             <form method="post">
               <div class="row pt-2">
